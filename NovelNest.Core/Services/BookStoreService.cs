@@ -156,7 +156,7 @@
                 OpeningTime = currentBookStore.OpeningTime.ToString(DateTimeBookStoreFormat),
                 ClosingTime = currentBookStore.ClosingTime.ToString(DateTimeBookStoreFormat),
                 Contact = currentBookStore.Contact,
-                Status = await IsBookstoreOpen(currentBookStore.OpeningTime, currentBookStore.ClosingTime) ? "Отворено" : "Затворено",
+                Status = await IsBookstoreOpen(currentBookStore.OpeningTime, currentBookStore.ClosingTime) ? "Open" : "Closed",
                 ImageUrl = currentBookStore.ImageUrl
             };
 

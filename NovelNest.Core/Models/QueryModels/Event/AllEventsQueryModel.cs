@@ -8,13 +8,13 @@ namespace NovelNest.Core.Models.QueryModels.Event
     {
         public int EventsPerPage { get; } = 8;
 
-        [Display(Name = "Търсене")]
+        [Display(Name = "Search")]
         public string SearchTerm { get; set; } = null!;
 
-        [Display(Name = "Сортиране")]
+        [Display(Name = "Sorting")]
         public EventSorting Sorting { get; set; }
 
-        [Display(Name = "Статус")]
+        [Display(Name = "Status")]
         public EventStatus Status { get; set; }
 
         public int TotalEventsCount { get; set; }

@@ -2,7 +2,7 @@
 @inject IPublisherService publisherService
 
 @{
-    ViewBag.Title = "Всички Събития";
+    ViewBag.Title = "All Events";
 }
 
 <h2 class="text-center mt-3">@ViewBag.Title</h2>
@@ -11,7 +11,7 @@
 @if (await publisherService.ExistsByUserIdAsync(User.Id()))
 {
     <div class="text-center mb-4">
-        <a asp-controller="Publisher" asp-action="AddEvent" class="btn btn-primary btn-lg">Добави Събитие</a>
+        <a asp-controller="Publisher" asp-action="AddEvent" class="btn btn-primary btn-lg">Add Event</a>
     </div>
 }
 
@@ -20,16 +20,16 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label asp-for="SearchTerm"></label>
-                <input asp-for="SearchTerm" class="form-control" placeholder="Търси...">
+                <input asp-for="SearchTerm" class="form-control" placeholder="Search...">
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label asp-for="Sorting"></label>
                 <select asp-for="Sorting" class="form-control">
-                    <option value="0">Всички</option>
-                    <option value="1">Цена (Възходяща)</option>
-                    <option value="2">Цена (Низходяща)</option>
+                    <option value="0">All</option>
+                    <option value="1">Price (Ascending)</option>
+                    <option value="2">Price (Descending)</option>
                 </select>
             </div>
         </div>
@@ -37,21 +37,21 @@
             <div class="form-group">
                 <label asp-for="Status"></label>
                 <select asp-for="Status" class="form-control">
-                    <option value="0">Всички</option>
-                    <option value="1">Предстоящи</option>
-                    <option value="2">Изминали</option>
+                    <option value="0">All</option>
+                    <option value="1">Upcoming</option>
+                    <option value="2">Past</option>
                 </select>
             </div>
         </div>
         <div class="col-md-1">
-            <input type="submit" value="Търси" class="btn btn-success w-100" />
+            <input type="submit" value="Search" class="btn btn-success w-100" />
         </div>
     </div>
 </form>
 
 @if (!Model.Events.Any())
 {
-    <h2 class="text-center mt-5">Няма намерени събития!</h2>
+    <h2 class="text-center mt-5">No events found!</h2>
 }
 else
 {

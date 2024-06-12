@@ -2,7 +2,7 @@
 @inject IPublisherService publisherService
 
 @{
-    ViewBag.Title = "Детайли";
+    ViewBag.Title = "Details";
 }
 <h2 class="text-center mt-4 mb-3">@ViewBag.Title</h2>
 <hr />
@@ -14,35 +14,35 @@
         </div>
         <div class="col-md-8">
             <h4>@Model.Name</h4>
-            <p><strong>Локация:</strong> @Model.Location</p>
-            <p><strong>Отваря:</strong> @Model.OpeningTime</p>
-            <p><strong>Затваря:</strong> @Model.ClosingTime</p>
+            <p><strong>Location:</strong> @Model.Location</p>
+            <p><strong>Opens:</strong> @Model.OpeningTime</p>
+            <p><strong>Closes:</strong> @Model.ClosingTime</p>
             <p>
-                <strong>В момента:</strong>
-                @if (Model.Status == "Отворено")
+                <strong>Currently:</strong>
+                @if (Model.Status == "Open")
                 {
-                    <span class="text-success"><strong>Отворено</strong></span>
+                    <span class="text-success"><strong>Open</strong></span>
                 }
                 else
                 {
-                    <span class="text-danger"><strong>Затворено</strong></span>
+                    <span class="text-danger"><strong>Closed</strong></span>
                 }
             </p>
-            <p><strong>Контакт:</strong> @Model.Contact</p>
+            <p><strong>Contact:</strong> @Model.Contact</p>
         </div>
     </div>
 
     <div class="text-center mt-1">
-        <a asp-controller="BookStore" asp-action="All" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Обратно към Всички</a>
-        <a asp-controller="BookStore" asp-action="AllBooks" asp-route-id="@Model.Id" class="btn btn-success mb-2 w-100 p-3 fw-bold">Виж всички налични книги</a>
+        <a asp-controller="BookStore" asp-action="All" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Back to All</a>
+        <a asp-controller="BookStore" asp-action="AllBooks" asp-route-id="@Model.Id" class="btn btn-success mb-2 w-100 p-3 fw-bold">View all available books</a>
     </div>
 
     @if (await publisherService.ExistsByUserIdAsync(User.Id()))
     {
         <hr />
         <div class="d-flex justify-content-center mt-1">
-            <a asp-controller="Publisher" asp-action="EditBookStore" asp-route-id="@Model.Id" class="btn btn-primary mb-1 me-1 me-md-2 w-100 p-3 fw-bold">Редактирай</a>
-            <a asp-controller="Publisher" asp-action="DeleteBookStore" asp-route-id="@Model.Id" class="btn btn-danger mb-1 me-1 me-md-2 w-100 p-3 fw-bold">Изтрий</a>
+            <a asp-controller="Publisher" asp-action="EditBookStore" asp-route-id="@Model.Id" class="btn btn-primary mb-1 me-1 me-md-2 w-100 p-3 fw-bold">Edit</a>
+            <a asp-controller="Publisher" asp-action="DeleteBookStore" asp-route-id="@Model.Id" class="btn btn-danger mb-1 me-1 me-md-2 w-100 p-3 fw-bold">Delete</a>
         </div>
     }
 </div>

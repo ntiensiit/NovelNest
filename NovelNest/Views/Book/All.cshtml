@@ -2,7 +2,7 @@
 @inject IPublisherService publisherService
 
 @{
-    ViewBag.Title = "Всички книги";
+    ViewBag.Title = "All Books";
 }
 
 <h2 class="text-center mt-3">@ViewBag.Title</h2>
@@ -11,7 +11,7 @@
 @if (await publisherService.ExistsByUserIdAsync(User.Id()))
 {
     <div class="text-center mb-4">
-        <a asp-controller="Publisher" asp-action="AddBook" class="btn btn-primary btn-lg">Добави книга</a>
+        <a asp-controller="Publisher" asp-action="AddBook" class="btn btn-primary btn-lg">Add Book</a>
     </div>
 }
 
@@ -19,27 +19,27 @@
     <div class="row">
         <div class="form-group col-md-3">
             <label asp-for="SearchTerm"></label>
-            <input asp-for="SearchTerm" class="form-control" placeholder="Търси...">
+            <input asp-for="SearchTerm" class="form-control" placeholder="Search...">
         </div>
 
         <div class="form-group col-md-2">
             <label asp-for="Sorting"></label>
             <select asp-for="Sorting" class="form-control">
-                <option value="0">Най-скоро добавени</option>
-                <option value="1">Най-късно добавени</option>
-                <option value="2">Цена (Възходяща)</option>
-                <option value="3">Цена (Низходяща)</option>
-                <option value="4">Заглавие (Възходящо)</option>
-                <option value="5">Заглавие (Низходящо)</option>
-                <option value="6">Автор (Възходящ)</option>
-                <option value="7">Автор (Низходящ)</option>
+                <option value="0">Newest</option>
+                <option value="1">Oldest</option>
+                <option value="2">Price (Ascending)</option>
+                <option value="3">Price (Descending)</option>
+                <option value="4">Title (Ascending)</option>
+                <option value="5">Title (Descending)</option>
+                <option value="6">Author (Ascending)</option>
+                <option value="7">Author (Descending)</option>
             </select>
         </div>
 
         <div class="form-group col-md-3">
             <label asp-for="Genre"></label>
             <select asp-for="Genre" class="form-control">
-                <option value="">Всички</option>
+                <option value="">All</option>
                 @foreach (var genre in Model.Genres)
                 {
                     <option value="@genre">@genre</option>
@@ -50,7 +50,7 @@
         <div class="form-group col-md-3">
             <label asp-for="CoverType"></label>
             <select asp-for="CoverType" class="form-control">
-                <option value="">Всички</option>
+                <option value="">All</option>
                 @foreach (var coverType in Model.CoverTypes)
                 {
                     <option value="@coverType">@coverType</option>
@@ -59,14 +59,14 @@
         </div>
 
         <div class="col-md-1 d-flex align-items-end">
-            <input type="submit" value="Търси" class="btn btn-success w-100" />
+            <input type="submit" value="Search" class="btn btn-success w-100" />
         </div>
     </div>
 </form>
 
 @if (!Model.Books.Any())
 {
-    <h2 class="text-center mt-5">Няма намерени книги!</h2>
+    <h2 class="text-center mt-5">No books found!</h2>
 }
 else
 {

@@ -10,10 +10,10 @@
         public string BookTitle { get; set; } = null!;
         public int ReviewsPerPage { get; } = 8;
 
-        [Display(Name = "Търсене")]
+        [Display(Name = "Search")]
         public string SearchTerm { get; set; } = null!;
 
-        [Display(Name = "Сортиране")]
+        [Display(Name = "Sorting")]
         public BookReviewSorting Sorting { get; set; }
 
         public int TotalBookReviewsCount { get; set; }

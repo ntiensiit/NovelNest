@@ -8,10 +8,10 @@
         public int UsersPerPage { get; } = 8;
         public int CurrentPage { get; set; } = 1;
 
-        [Display(Name = "Търсене")]
+        [Display(Name = "Search")]
         public string SearchTerm { get; set; } = null!;
 
-        [Display(Name = "Роля")]
+        [Display(Name = "Role")]
         public UserRoleStatus RoleStatus { get; set; }
 
         public int TotalUsersCount { get; set; }

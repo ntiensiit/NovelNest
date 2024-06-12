@@ -1,7 +1,7 @@
 ﻿@model AllUsersQueryModel
 
 @{
-    ViewBag.Title = "Всички Потребители";
+    ViewBag.Title = "All Users";
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
@@ -13,39 +13,39 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label asp-for="SearchTerm"></label>
-                <input asp-for="SearchTerm" class="form-control" placeholder="Търси...">
+                <input asp-for="SearchTerm" class="form-control" placeholder="Search...">
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label asp-for="RoleStatus"></label>
                 <select asp-for="RoleStatus" class="form-control">
-                    <option value="0">Всички</option>
-                    <option value="1">Publisher-и</option>
-                    <option value="2">Admin-и</option>
+                    <option value="0">All</option>
+                    <option value="1">Publishers</option>
+                    <option value="2">Admins</option>
                 </select>
             </div>
         </div>
         <div class="col-md-1">
-            <input type="submit" value="Търси" class="btn btn-success w-100" />
+            <input type="submit" value="Search" class="btn btn-success w-100" />
         </div>
     </div>
 </form>
 
 @if (!Model.Users.Any())
 {
-    <h2 class="text-center mt-5">Няма намерени потребители!</h2>
+    <h2 class="text-center mt-5">No users found!</h2>
 }
 else
 {
     <table class="table table-striped mt-4">
         <thead>
             <tr>
-                <th><label>Име</label></th>
-                <th><label>Имейл</label></th>
+                <th><label>Name</label></th>
+                <th><label>Email</label></th>
                 <th><label>Publisher</label></th>
                 <th><label>Admin</label></th>
-                <th><label>Действия</label></th>
+                <th><label>Actions</label></th>
             </tr>
         </thead>
         <tbody>
@@ -79,7 +79,7 @@ else
                         }
                     </td>
                     <td>
-                        <a asp-area="Admin" asp-controller="User" asp-action="Details" asp-route-userId="@user.Id" class="btn btn-outline-danger">Действия</a>
+                        <a asp-area="Admin" asp-controller="User" asp-action="Details" asp-route-userId="@user.Id" class="btn btn-outline-danger">Actions</a>
                     </td>
                 </tr>
             }

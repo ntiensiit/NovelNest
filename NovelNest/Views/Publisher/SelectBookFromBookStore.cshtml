@@ -2,7 +2,7 @@
 @inject IPublisherService publisherService
 
 @{
-    ViewBag.Title = "Всички книги";
+    ViewBag.Title = "All Books";
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
@@ -13,27 +13,27 @@
     <div class="row">
         <div class="form-group col-md-3">
             <label asp-for="SearchTerm"></label>
-            <input asp-for="SearchTerm" class="form-control" placeholder="Търси...">
+            <input asp-for="SearchTerm" class="form-control" placeholder="Search...">
         </div>
 
         <div class="form-group col-md-2">
             <label asp-for="Sorting"></label>
             <select asp-for="Sorting" class="form-control">
-                <option value="0">Най-скоро добавени</option>
-                <option value="1">Най-късно добавени</option>
-                <option value="2">Цена (Възходяща)</option>
-                <option value="3">Цена (Низходяща)</option>
-                <option value="4">Заглавие (Възходящо)</option>
-                <option value="5">Заглавие (Низходящо)</option>
-                <option value="6">Автор (Възходящ)</option>
-                <option value="7">Автор (Низходящ)</option>
+                <option value="0">Newest</option>
+                <option value="1">Oldest</option>
+                <option value="2">Price (Ascending)</option>
+                <option value="3">Price (Descending)</option>
+                <option value="4">Title (Ascending)</option>
+                <option value="5">Title (Descending)</option>
+                <option value="6">Author (Ascending)</option>
+                <option value="7">Author (Descending)</option>
             </select>
         </div>
 
         <div class="form-group col-md-3">
             <label asp-for="Genre"></label>
             <select asp-for="Genre" class="form-control">
-                <option value="">Всички</option>
+                <option value="">All</option>
                 @foreach (var genre in Model.Genres)
                 {
                     <option value="@genre">@genre</option>
@@ -44,7 +44,7 @@
         <div class="form-group col-md-3">
             <label asp-for="CoverType"></label>
             <select asp-for="CoverType" class="form-control">
-                <option value="">Всички</option>
+                <option value="">All</option>
                 @foreach (var coverType in Model.CoverTypes)
                 {
                     <option value="@coverType">@coverType</option>
@@ -53,14 +53,14 @@
         </div>
 
         <div class="col-md-1 d-flex align-items-end">
-            <input type="submit" value="Търси" class="btn btn-success w-100" />
+            <input type="submit" value="Search" class="btn btn-success w-100" />
         </div>
     </div>
 </form>
 
 @if (!Model.Books.Any())
 {
-    <h2 class="text-center mt-5">Няма намерени книги!</h2>
+    <h2 class="text-center mt-5">No books found!</h2>
 }
 else
 {
@@ -72,12 +72,12 @@ else
                     <img class="card-img-top" src="@book.ImageUrl" alt="Book Image">
                     <div class="card-body">
                         <h4 class="card-title"><strong>@book.Title</strong></h4>
-                        <p class="card-text"><strong>Автор:</strong> @book.Author</p>
-                        <p class="card-text"><strong>Цена:</strong> @book.Price лв.</p>
+                        <p class="card-text"><strong>Author:</strong> @book.Author</p>
+                        <p class="card-text"><strong>Price:</strong> @book.Price BGN</p>
                     </div>
                     @if (await publisherService.ExistsByUserIdAsync(User.Id()))
                     {
-                        <a asp-controller="Publisher" asp-action="AddBookToBookStore" asp-route-id="@book.Id" asp-route-secondId="@Model.BookStoreId" class="btn btn-success mb-1 w-100 p-3 fw-bold">Добави</a>
+                        <a asp-controller="Publisher" asp-action="AddBookToBookStore" asp-route-id="@book.Id" asp-route-secondId="@Model.BookStoreId" class="btn btn-success mb-1 w-100 p-3 fw-bold">Add</a>
                     }
                 </div>
             </div>

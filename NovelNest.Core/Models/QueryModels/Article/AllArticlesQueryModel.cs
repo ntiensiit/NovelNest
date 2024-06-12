@@ -7,10 +7,10 @@
     {
         public int ArticlesPerPage { get; } = 6;
 
-        [Display(Name = "Търсене")]
+        [Display(Name = "Search")]
         public string SearchTerm { get; set; } = null!;
 
-        [Display(Name = "Сортиране")]
+        [Display(Name = "Sorting")]
         public ArticleSorting Sorting { get; set; }
 
         public int TotalArticlesCount { get; set; }

@@ -1,7 +1,7 @@
 ﻿@model AllBookCollectionsModel
 
 @{
-    ViewBag.Title = "Моите Книги";
+    ViewBag.Title = "My Books";
 }
 <h2 class="text-center mt-4 mb-3">@ViewBag.Title</h2>
 <hr />
@@ -9,11 +9,11 @@
 <div class="col mb-4">
     @if (!Model.booksUserWantsToRead.Books.Any() || Model.booksUserWantsToRead == null)
     {
-        <h4 class="text-center">Все още не сте добавили книги, които искате да прочетете.</h4>
+        <h4 class="text-center">You have not added any books you want to read yet.</h4>
     }
     else
     {
-        <h2 class="text-center mt-4 mb-3">Книги, които искам да прочета:</h2>
+        <h2 class="text-center mt-4 mb-3">Books I want to read:</h2>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mt-5">
             @foreach (var book in Model.booksUserWantsToRead.Books.OrderByDescending(m => m.Id).Take(4).Select((value, index) => new { Value = value, Index = index }))
             {
@@ -26,16 +26,16 @@
                         <img class="card-img-top" src="@book.Value.ImageUrl" alt="Book Image">
                         <div class="card-body">
                             <h4 class="card-title"><strong>@book.Value.Title</strong></h4>
-                            <p class="card-text"><strong>Автор:</strong> @book.Value.Author</p>
+                            <p class="card-text"><strong>Author:</strong> @book.Value.Author</p>
                         </div>
-                        <a asp-controller="Book" asp-action="DetailsWantToRead" asp-route-id="@book.Value.Id" class="btn btn-warning mb-1 w-100 p-3 fw-bold">Виж Повече</a>
+                        <a asp-controller="Book" asp-action="DetailsWantToRead" asp-route-id="@book.Value.Id" class="btn btn-warning mb-1 w-100 p-3 fw-bold">View More</a>
                     </div>
                 </div>
             }
         </div>
 
         <div class="text-center">
-            <a asp-controller="Book" asp-action="WantToRead" class="btn btn-primary btn-lg">Виж Всички</a>
+            <a asp-controller="Book" asp-action="WantToRead" class="btn btn-primary btn-lg">View All</a>
         </div>
     }
 </div>
@@ -45,11 +45,11 @@
 <div class="col mb-4">
     @if (!Model.booksUserCurrentlyReading.Books.Any() || Model.booksUserCurrentlyReading == null)
     {
-        <h4 class="text-center">Все още не сте добавили книги, които в момента четете.</h4>
+        <h4 class="text-center">You have not added any books you are currently reading yet.</h4>
     }
     else
     {
-        <h2 class="text-center mt-4 mb-3">В момента чета:</h2>
+        <h2 class="text-center mt-4 mb-3">Currently reading:</h2>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mt-5">
             @foreach (var book in Model.booksUserCurrentlyReading.Books.OrderByDescending(m => m.Id).Take(4).Select((value, index) => new { Value = value, Index = index }))
             {
@@ -62,16 +62,16 @@
                         <img class="card-img-top" src="@book.Value.ImageUrl" alt="Book Image">
                         <div class="card-body">
                             <h4 class="card-title"><strong>@book.Value.Title</strong></h4>
-                            <p class="card-text"><strong>Автор:</strong> @book.Value.Author</p>
+                            <p class="card-text"><strong>Author:</strong> @book.Value.Author</p>
                         </div>
-                        <a asp-controller="Book" asp-action="DetailsCurrentlyReading" asp-route-id="@book.Value.Id" class="btn btn-warning mb-1 w-100 p-3 fw-bold">Виж Повече</a>
+                        <a asp-controller="Book" asp-action="DetailsCurrentlyReading" asp-route-id="@book.Value.Id" class="btn btn-warning mb-1 w-100 p-3 fw-bold">View More</a>
                     </div>
                 </div>
             }
         </div>
 
         <div class="text-center">
-            <a asp-controller="Book" asp-action="CurrentlyReading" class="btn btn-primary btn-lg">Виж Всички</a>
+            <a asp-controller="Book" asp-action="CurrentlyReading" class="btn btn-primary btn-lg">View All</a>
         </div>
     }
 </div>
@@ -81,11 +81,11 @@
 <div class="col mb-4">
     @if (!Model.booksUserRead.Books.Any() || Model.booksUserRead == null)
     {
-        <h4 class="text-center">Все още не сте добавили книги, които сте прочели.</h4>
+        <h4 class="text-center">You have not added any books you have read yet.</h4>
     }
     else
     {
-        <h2 class="text-center mt-4 mb-3">Прочетени книги:</h2>
+        <h2 class="text-center mt-4 mb-3">Read books:</h2>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mt-5">
             @foreach (var book in Model.booksUserRead.Books.OrderByDescending(m => m.Id).Take(4).Select((value, index) => new { Value = value, Index = index }))
             {
@@ -98,16 +98,16 @@
                         <img class="card-img-top" src="@book.Value.ImageUrl" alt="Book Image">
                         <div class="card-body">
                             <h4 class="card-title"><strong>@book.Value.Title</strong></h4>
-                            <p class="card-text"><strong>Автор:</strong> @book.Value.Author</p>
+                            <p class="card-text"><strong>Author:</strong> @book.Value.Author</p>
                         </div>
-                        <a asp-controller="Book" asp-action="DetailsRead" asp-route-id="@book.Value.Id" class="btn btn-warning mb-1 w-100 p-3 fw-bold">Виж Повече</a>
+                        <a asp-controller="Book" asp-action="DetailsRead" asp-route-id="@book.Value.Id" class="btn btn-warning mb-1 w-100 p-3 fw-bold">View More</a>
                     </div>
                 </div>
             }
         </div>
 
         <div class="text-center">
-            <a asp-controller="Book" asp-action="Read" class="btn btn-primary btn-lg">Виж Всички</a>
+            <a asp-controller="Book" asp-action="Read" class="btn btn-primary btn-lg">View All</a>
         </div>
     }
 </div>

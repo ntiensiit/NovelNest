@@ -7,20 +7,20 @@
     {
         public int BooksPerPage { get; } = 8;
 
-        [Display(Name = "Търсене")]
+        [Display(Name = "Search")]
         public string SearchTerm { get; set; } = null!;
 
-        [Display(Name = "Сортиране")]
+        [Display(Name = "Sorting")]
         public BookSorting Sorting { get; set; }
 
         public int TotalBooksCount { get; set; }
         public int CurrentPage { get; set; } = 1;
 
-        [Display(Name = "Жанр")]
+        [Display(Name = "Genre")]
         public string Genre { get; set; } = null!;
         public IEnumerable<string> Genres { get; set; } = null!;
 
-        [Display(Name = "Корица")]
+        [Display(Name = "Cover")]
         public string CoverType { get; set; } = null!;
         public IEnumerable<string> CoverTypes { get; set; } = null!;
 

@@ -1,7 +1,7 @@
 ﻿@model AllBookReviewsQueryModel
 
 @{
-    ViewBag.Title = "Всички Ревюта";
+    ViewBag.Title = "All Reviews";
 }
 
 @{
@@ -10,43 +10,43 @@
 
 @if (!Model.BookReviews.Any())
 {
-    <h2 class="text-center">Няма намерени ревюта за "@Model.BookTitle!"</h2>
+    <h2 class="text-center">No reviews found for "@Model.BookTitle!"</h2>
     <div class="text-center mb-2 mt-4">
-        <a asp-controller="Book" asp-action="AddReview" asp-route-id="@Model.BookId" class="btn btn-success btn-lg">Добави Ревю</a>
+        <a asp-controller="Book" asp-action="AddReview" asp-route-id="@Model.BookId" class="btn btn-success btn-lg">Add Review</a>
     </div>
     <div class="text-center mb-2 mt-2">
-        <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.BookId" asp-route-information="@Model.BookInfo" class="btn btn-warning btn-lg">Върни се към Книгата</a>
+        <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.BookId" asp-route-information="@Model.BookInfo" class="btn btn-warning btn-lg">Back to the Book</a>
     </div>
 }
 else
 {
     <div class="text-center mb-2 mt-2">
-        <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.BookId" asp-route-information="@Model.BookInfo" class="btn btn-warning btn-lg">Върни се към Книгата</a>
+        <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.BookId" asp-route-information="@Model.BookInfo" class="btn btn-warning btn-lg">Back to the Book</a>
     </div>
     <hr />
 
-    <h2 class="text-center">Всички ревюта за "@Model.BookTitle!"</h2>
-    <h3 class="text-center mb-4 mt-4">Средна оценка: @Model.BookReviews.Average(br => br.Rate)</h3>
+    <h2 class="text-center">All reviews for "@Model.BookTitle!"</h2>
+    <h3 class="text-center mb-4 mt-4">Average rating: @Model.BookReviews.Average(br => br.Rate)</h3>
 
     <form method="get">
         <div class="row justify-content-center">
             <div class="form-group col-md-3">
                 <label asp-for="SearchTerm"></label>
-                <input asp-for="SearchTerm" class="form-control" placeholder="Търси...">
+                <input asp-for="SearchTerm" class="form-control" placeholder="Search...">
             </div>
 
             <div class="form-group col-md-2">
                 <label asp-for="Sorting"></label>
                 <select asp-for="Sorting" class="form-control">
-                    <option value="0">Най-скоро добавени</option>
-                    <option value="1">Най-късно добавени</option>
-                    <option value="2">Оценка (Възходяща)</option>
-                    <option value="3">Оценка (Низходяща)</option>
+                    <option value="0">Newest</option>
+                    <option value="1">Oldest</option>
+                    <option value="2">Rating (Ascending)</option>
+                    <option value="3">Rating (Descending)</option>
                 </select>
             </div>
 
             <div class="col-md-1 d-flex align-items-end">
-                <input type="submit" value="Търси" class="btn btn-success w-100" />
+                <input type="submit" value="Search" class="btn btn-success w-100" />
             </div>
         </div>
     </form>
@@ -54,18 +54,18 @@ else
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 mt-5">
     @if (review == null)
     {
-        <h2 class="text-center">Моето Ревю</h2>
+        <h2 class="text-center">My Review</h2>
         <div class="text-center mb-4 mt-4">
-            <a asp-controller="Book" asp-action="AddReview" asp-route-id="@Model.BookId" class="btn btn-primary btn-lg">Добави Ревю</a>
+            <a asp-controller="Book" asp-action="AddReview" asp-route-id="@Model.BookId" class="btn btn-primary btn-lg">Add Review</a>
         </div>
 
             if (Model.BookReviews.Count() == 0)
             {
-                <h4 class="text-center">За момента никой друг не е добавял ревю за тази книга!</h4>
+                <h4 class="text-center">No one else has added a review for this book yet!</h4>
             }
             else
             {
-                <h2 class="text-center">Други Ревюта</h2>
+                <h2 class="text-center">Other Reviews</h2>
                 @foreach (var currentReview in Model.BookReviews)
                 {
                     @if (currentReview.UserId == User.Id())
@@ -79,16 +79,16 @@ else
     }
     else
     {
-        <h2 class="text-center">Моето Ревю</h2>
+        <h2 class="text-center">My Review</h2>
         <partial name="_BookReviewPartial" model="@review" />
 
         if (Model.BookReviews.Count() == 1)
         {
-             <h4 class="text-center">За момента никой друг не е добавял ревю за тази книга!</h4>
+             <h4 class="text-center">No one else has added a review for this book yet!</h4>
         }
         else
         {
-            <h2 class="text-center">Други Ревюта</h2>
+            <h2 class="text-center">Other Reviews</h2>
             @foreach (var currentReview in Model.BookReviews)
             {
                 @if (currentReview.UserId == User.Id())

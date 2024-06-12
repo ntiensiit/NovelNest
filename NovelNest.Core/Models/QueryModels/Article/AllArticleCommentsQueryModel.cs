@@ -10,10 +10,10 @@ namespace NovelNest.Core.Models.QueryModels.Article
         public string ArticleTitle { get; set; } = null!;
         public int CommentsPerPage { get; } = 8;
 
-        [Display(Name = "Търсене")]
+        [Display(Name = "Search")]
         public string SearchTerm { get; set; } = null!;
 
-        [Display(Name = "Сортиране")]
+        [Display(Name = "Sorting")]
         public ArticleCommentSorting Sorting { get; set; }
 
         public int TotalArticleCommentsCount { get; set; }

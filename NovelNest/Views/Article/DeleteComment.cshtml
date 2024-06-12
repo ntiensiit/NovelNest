@@ -1,7 +1,7 @@
 ﻿@model ArticleCommentDeleteViewModel
 
 @{
-    ViewBag.Title = "Изтрий Коментар";
+    ViewBag.Title = "Delete Comment";
 }
 
 <div class="container">
@@ -9,14 +9,14 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body text-center">
-                    <h2 class="card-title text-danger" style="margin-top: 15px;">Сигурен ли си, че искаш да изтриеш своя коментар за тази статия?</h2>
+                    <h2 class="card-title text-danger" style="margin-top: 15px;">Are you sure you want to delete your comment on this article?</h2>
                     <h2 class="card-title" style="margin-top: 15px;">"@Model.ArticleTitle"</h2>
                 </div>
                 <div class="card-footer d-flex justify-content-center">
                     <form asp-action="DeleteCommentConfirmed" method="post" class="col-12">
                         <input type="hidden" asp-for="CommentId" />
-                        <a asp-action="AllComments" asp-route-id="@Model.ArticleId" class="btn btn-secondary mb-1 w-100 p-3 fw-bold">Не</a>
-                        <button type="submit" class="btn btn-danger mb-1 w-100 p-3 fw-bold">Да</button>
+                        <a asp-action="AllComments" asp-route-id="@Model.ArticleId" class="btn btn-secondary mb-1 w-100 p-3 fw-bold">No</a>
+                        <button type="submit" class="btn btn-danger mb-1 w-100 p-3 fw-bold">Yes</button>
                     </form>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 @inject IPublisherService publisherService
 
 @{
-    ViewBag.Title = "Всички Статии";
+    ViewBag.Title = "All Articles";
 }
 
 <h2 class="text-center mt-3">@ViewBag.Title</h2>
@@ -11,7 +11,7 @@
 @if (await publisherService.ExistsByUserIdAsync(User.Id()))
 {
     <div class="text-center mb-4">
-        <a asp-controller="Publisher" asp-action="AddArticle" class="btn btn-primary btn-lg">Добави Статия</a>
+        <a asp-controller="Publisher" asp-action="AddArticle" class="btn btn-primary btn-lg">Add Article</a>
     </div>
 }
 
@@ -20,29 +20,29 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label asp-for="SearchTerm"></label>
-                <input asp-for="SearchTerm" class="form-control" placeholder="Търси...">
+                <input asp-for="SearchTerm" class="form-control" placeholder="Search...">
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label asp-for="Sorting"></label>
                 <select asp-for="Sorting" class="form-control">
-                    <option value="0">Най-скоро добавени</option>
-                    <option value="1">Най-късно добавени</option>
-                    <option value="2">Най-големи</option>
-                    <option value="3">Най-малки</option>
+                    <option value="0">Newest</option>
+                    <option value="1">Oldest</option>
+                    <option value="2">Largest</option>
+                    <option value="3">Smallest</option>
                 </select>
             </div>
         </div>
         <div class="col-md-1">
-            <input type="submit" value="Търси" class="btn btn-success w-100" />
+            <input type="submit" value="Search" class="btn btn-success w-100" />
         </div>
     </div>
 </form>
 
 @if (!Model.Articles.Any())
 {
-    <h2 class="text-center mt-5">Няма намерени статии!</h2>
+    <h2 class="text-center mt-5">No articles found!</h2>
 }
 else
 {

@@ -1,7 +1,7 @@
 ﻿@model AllArticleCommentsQueryModel
 
 @{
-    ViewBag.Title = "Всички Коментари";
+    ViewBag.Title = "All Comments";
 }
 
 @{
@@ -10,43 +10,43 @@
 
 @if (!Model.ArticleComments.Any())
 {
-    <h2 class="text-center">Няма намерени коментари за</h2>
+    <h2 class="text-center">No comments found for</h2>
     <h2 class="text-center text-success">"@Model.ArticleTitle!"</h2>
     <div class="text-center mb-2 mt-4">
-        <a asp-controller="Article" asp-action="AddComment" asp-route-id="@Model.ArticleId" class="btn btn-success btn-lg">Добави Коментар</a>
+        <a asp-controller="Article" asp-action="AddComment" asp-route-id="@Model.ArticleId" class="btn btn-success btn-lg">Add Comment</a>
     </div>
     <div class="text-center mb-2 mt-2">
-        <a asp-controller="Article" asp-action="Details" asp-route-id="@Model.ArticleId" asp-route-information="@Model.ArticleInfo" class="btn btn-warning btn-lg">Върни се към Статията</a>
+        <a asp-controller="Article" asp-action="Details" asp-route-id="@Model.ArticleId" asp-route-information="@Model.ArticleInfo" class="btn btn-warning btn-lg">Back to the Article</a>
     </div>
 }
 else
 {
     <div class="text-center mb-2 mt-2">
-        <a asp-controller="Article" asp-action="Details" asp-route-id="@Model.ArticleId" asp-route-information="@Model.ArticleInfo" class="btn btn-warning btn-lg">Върни се към Статията</a>
+        <a asp-controller="Article" asp-action="Details" asp-route-id="@Model.ArticleId" asp-route-information="@Model.ArticleInfo" class="btn btn-warning btn-lg">Back to the Article</a>
     </div>
 
     <hr />
 
-    <h2 class="text-center">Всички Коментари за</h2>
+    <h2 class="text-center">All Comments for</h2>
     <h2 class="text-center">"@Model.ArticleTitle"</h2>
 
     <form method="get" style="margin-top: 50px;">
         <div class="row justify-content-center">
             <div class="form-group col-md-3">
                 <label asp-for="SearchTerm"></label>
-                <input asp-for="SearchTerm" class="form-control" placeholder="Търси...">
+                <input asp-for="SearchTerm" class="form-control" placeholder="Search...">
             </div>
 
             <div class="form-group col-md-2">
                 <label asp-for="Sorting"></label>
                 <select asp-for="Sorting" class="form-control">
-                    <option value="0">Най-скоро добавени</option>
-                    <option value="1">Най-късно добавени</option>
+                    <option value="0">Newest</option>
+                    <option value="1">Oldest</option>
                 </select>
             </div>
 
             <div class="col-md-1 d-flex align-items-end">
-                <input type="submit" value="Търси" class="btn btn-success w-100" />
+                <input type="submit" value="Search" class="btn btn-success w-100" />
             </div>
         </div>
     </form>
@@ -54,18 +54,18 @@ else
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 mt-3">
         @if (comment == null)
         {
-            <h2 class="text-center">Моят Коментар</h2>
+            <h2 class="text-center">My Comment</h2>
             <div class="text-center mb-4 mt-4">
-                <a asp-controller="Article" asp-action="AddComment" asp-route-id="@Model.ArticleId" class="btn btn-primary btn-lg">Добави Коментар</a>
+                <a asp-controller="Article" asp-action="AddComment" asp-route-id="@Model.ArticleId" class="btn btn-primary btn-lg">Add Comment</a>
             </div>
 
             if (Model.ArticleComments.Count() == 0)
             {
-                <h4 class="text-center text-secondary" style="margin-top: 50px;">За момента никой не е добавял коментар за тази статия!</h4>
+                <h4 class="text-center text-secondary" style="margin-top: 50px;">No one has added a comment for this article yet!</h4>
             }
             else
             {
-                <h2 class="text-center">Други Коментари</h2>
+                <h2 class="text-center">Other Comments</h2>
                 @foreach (var currentComment in Model.ArticleComments)
                 {
                     @if (currentComment.UserId == User.Id())
@@ -79,16 +79,16 @@ else
         }
         else
         {
-            <h2 class="text-center">Моят Коментар</h2>
+            <h2 class="text-center">My Comment</h2>
             <partial name="_ArticleCommentPartial" model="@comment" />
 
             if (Model.ArticleComments.Count() == 1)
             {
-                <h4 class="text-center text-secondary" style="margin-top: 50px;">За момента никой друг не е добавял коментар за тази статия!</h4>
+                <h4 class="text-center text-secondary" style="margin-top: 50px;">No one else has added a comment for this article yet!</h4>
             }
             else
             {
-                <h2 class="text-center">Други Коментари</h2>
+                <h2 class="text-center">Other Comments</h2>
                 @foreach (var currentComment in Model.ArticleComments)
                 {
                     @if (currentComment.UserId == User.Id())

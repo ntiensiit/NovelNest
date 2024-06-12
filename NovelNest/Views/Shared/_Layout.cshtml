@@ -28,13 +28,13 @@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="All" asp-route-id="@UserManager.GetUserId(User)">Количка</a>
+                                <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="All" asp-route-id="@UserManager.GetUserId(User)">Cart</a>
                             </li>
                         }
                         @if (User.IsAdmin())
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Admin" asp-controller="User" asp-action="All" title="Admin">Действия</a>
+                                <a class="nav-link" asp-area="Admin" asp-controller="User" asp-action="All" title="Admin">Actions</a>
                             </li>
                         }
                     </ul>

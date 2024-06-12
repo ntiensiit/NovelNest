@@ -23,7 +23,7 @@
            asp-route-currentPage="@previousPage"
            asp-route-searchTerm="@Model.SearchTerm"><<</a>
 
-        <p class="align-self-center">Страница @Model.CurrentPage от @maxPage</p>
+        <p class="align-self-center">Page @Model.CurrentPage of @maxPage</p>
 
         <a class="btn btn-primary @(shouldButtonBeDisabled ? "disabled" : string.Empty)"
            asp-controller="Book"

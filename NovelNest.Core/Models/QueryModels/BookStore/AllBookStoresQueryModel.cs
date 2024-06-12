@@ -10,10 +10,10 @@ namespace NovelNest.Core.Models.QueryModels.BookStore
         public int BookStoresPerPage { get; } = 8;
         public int CurrentPage { get; set; } = 1;
 
-        [Display(Name = "Търсене")]
+        [Display(Name = "Search")]
         public string SearchTerm { get; set; } = null!;
 
-        [Display(Name = "Статус")]
+        [Display(Name = "Status")]
         public BookStoreStatus Status { get; set; }
 
         public int TotalBookStoresCount { get; set; }
