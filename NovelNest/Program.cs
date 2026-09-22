@@ -67,5 +67,14 @@ app.UseEndpoints(endpoints =>
     endpoints.MapRazorPages();
 });
 
-await app.CreateAdminRoleAsync();
+try
+{
+    await app.CreateAdminRoleAsync();
+}
+catch (Exception ex)
+{
+    var logger = app.Services.GetRequiredService<ILoggerFactory>().CreateLogger("Program");
+    logger.LogError(ex, "CreateAdminRoleAsync failed - app will continue to run");
+}
+
 await app.RunAsync();
